@@ -2,6 +2,7 @@ body{
     background-color: #16213E;
     min-width: 700px;
     width: 50%;
+    height: max-content;
     margin: 50px auto;
 }
 
