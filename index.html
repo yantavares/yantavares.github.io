@@ -1,11 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
     <head>
         <meta charset="UFT-8">
         <link rel="stylesheet" href="index.css">
     </head>
         
     <body>
+        <!-- https://www.w3schools.com/howto/tryit.asp?filename=tryhow_css_dropdown_navbar_click -->
+    <div class="navbar">
+        <a href="#home">Home</a>
+        <div class="dropdown">
+        <button class="dropbtn" onclick="myFunction()">
+            Projetos
+        <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content" id="myDropdown">
+        <a href="projeto.html">Nada aqui por enquanto...</a>
+        </div>
+        </div> 
+    </div>
 
         <h1><b>Blog pessoal do Yan</b></h1>
 
@@ -45,5 +58,9 @@
             </div>
             
         </div>
+
+        <script src="script.js"></script>
+    
     </body>
 </html>
+
