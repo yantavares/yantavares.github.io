@@ -138,3 +138,8 @@ div{
     display: block;
     
   }
+  .imagemfundo{
+    background-image: url(tim\ maia.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
