@@ -58,6 +58,7 @@ div{
     left: 10px;
     cursor: pointer;
     color: aqua;
+    text-decoration: none;
 }
 
 #redes{
