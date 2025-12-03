@@ -288,7 +288,7 @@ export const Home = () => {
             transition={{ duration: 0.6 }}
             className="section-header"
           >
-            <h3>Let's Connect</h3>
+            <h3>Socials</h3>
             <p>Feel free to reach out!</p>
           </motion.div>
 
