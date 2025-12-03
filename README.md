@@ -1,4 +1,4 @@
-# Yan Tavares - Portfolio
+# Yan Tavares - Resume
 
 A professional portfolio website built with React and TypeScript, designed to showcase software engineering projects, academic research, and professional certifications.
 
