@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useSpring, useTransform, type Variants } from "framer-motion";
+import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import confetti from "canvas-confetti";
 import { useGithubProjects } from "../hooks/useGithubProjects";
 import { ProjectCard } from "../components/ProjectCard";
@@ -41,14 +42,16 @@ export const Home = () => {
   useEffect(() => {
     const handleResize = () => {
       setItemsPerPage(calculateItemsPerPage());
+      setCurrentPage(1);
     };
 
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Reset page when projects change or itemsPerPage changes
+  // Reset page when projects change
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setCurrentPage(1);
   }, [projects.length, itemsPerPage]);
 
@@ -58,7 +61,6 @@ export const Home = () => {
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
-    // Scroll logic moved to useEffect to ensure it runs after render
   };
 
   // Scroll to top of projects section when page changes
@@ -221,19 +223,22 @@ export const Home = () => {
                 name: "GitHub",
                 url: "https://github.com/yantavares",
                 label: "Check my code",
-                color: "#fff"
+                color: "#fff",
+                icon: FaGithub
               },
               {
                 name: "LinkedIn",
                 url: "https://linkedin.com/in/yantavares01",
                 label: "Connect with me",
-                color: "#0077b5"
+                color: "#0077b5",
+                icon: FaLinkedin
               },
               {
                 name: "Email",
                 url: "mailto:yantdo1@gmail.com",
                 label: "Get in touch",
-                color: "#38bdf8"
+                color: "#38bdf8",
+                icon: FaEnvelope
               }
             ].map((link, index) => (
               <motion.a
@@ -242,24 +247,46 @@ export const Home = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="contact-card"
-                initial={{ opacity: 0, scale: 0.8, y: 50 }}
-                whileInView={{ opacity: 1, scale: 1, y: 0 }}
+                initial="hidden"
+                whileInView="visible"
+                whileHover="hover"
                 viewport={{ once: true }}
-                transition={{ 
-                  type: "spring",
-                  stiffness: 100,
-                  damping: 15,
-                  delay: index * 0.15 
-                }}
-                whileHover={{ 
-                  y: -10, 
-                  scale: 1.02,
-                  backgroundColor: "rgba(255, 255, 255, 0.08)",
-                  borderColor: "var(--accent-color)"
+                variants={{
+                  hidden: { opacity: 0, scale: 0.8, y: 50 },
+                  visible: { 
+                    opacity: 1, 
+                    scale: 1, 
+                    y: 0,
+                    transition: { 
+                      type: "spring",
+                      stiffness: 100,
+                      damping: 15,
+                      delay: index * 0.15 
+                    }
+                  },
+                  hover: { 
+                    y: -5, 
+                    scale: 1.05,
+                    backgroundColor: "rgba(255, 255, 255, 0.08)",
+                    borderColor: "var(--accent-color)",
+                    transition: { duration: 0.2 }
+                  }
                 }}
               >
                 <span className="contact-label">{link.label}</span>
-                <span className="contact-name" style={{ color: link.color }}>{link.name}</span>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem' }}>
+                  <span className="contact-name" style={{ color: link.color }}>{link.name}</span>
+                  <motion.div
+                    style={{ overflow: 'hidden', display: 'flex' }}
+                    variants={{
+                      visible: { opacity: 0, scale: 0, x: -10, width: 0 },
+                      hover: { opacity: 1, scale: 1, x: 0, width: 'auto' }
+                    }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <link.icon size={22} color={link.color} />
+                  </motion.div>
+                </div>
               </motion.a>
             ))}
           </div>
@@ -269,7 +296,6 @@ export const Home = () => {
       <footer className="footer">
         <div className="footer-content">
           <p>&copy; {new Date().getFullYear()} Yan Tavares.</p>
-          <p className="tech-stack">Built with React, TypeScript & Framer Motion</p>
         </div>
       </footer>
     </div>
