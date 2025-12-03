@@ -25,10 +25,11 @@ export const useGithubProjects = (username: string) => {
           throw new Error('Failed to fetch projects');
         }
         const data = await response.json();
-        // Filter out forks if desired, or keep them. Let's keep non-forks for a cleaner portfolio usually.
+
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         const nonForks = data.filter((repo: any) => !repo.fork);
         
-        // Sort by stars then updated
+        // Sort by stars
         const sorted = nonForks.sort((a: GithubRepo, b: GithubRepo) => {
             return b.stargazers_count - a.stargazers_count;
         });

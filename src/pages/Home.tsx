@@ -1,11 +1,11 @@
-import { useState, useEffect, useRef } from "react";
-import { motion, useScroll, useSpring, useTransform, type Variants } from "framer-motion";
-import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import confetti from "canvas-confetti";
-import { useGithubProjects } from "../hooks/useGithubProjects";
-import { ProjectCard } from "../components/ProjectCard";
-import { contributions, papers, certifications } from "../data/achievements";
+import { motion, useScroll, useSpring, useTransform, type Variants } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { FaEnvelope, FaGithub, FaLinkedin } from "react-icons/fa";
 import pfp from "../assets/pfp.png";
+import { ProjectCard } from "../components/ProjectCard";
+import { certifications, contributions, papers } from "../data/achievements";
+import { useGithubProjects } from "../hooks/useGithubProjects";
 import "../styles/Home.css";
 
 export const Home = () => {
@@ -19,14 +19,11 @@ export const Home = () => {
   
   const backgroundY = useTransform(scrollY, [0, 500], [0, 350]);
 
-  // Calculate items per page based on screen size and grid layout
   const calculateItemsPerPage = () => {
     if (window.innerWidth < 768) {
       return 8; // Mobile: 1 column * 8 rows
     }
 
-    // Desktop: Calculate columns based on container width (max 1200px - 4rem padding)
-    // Grid item min-width: 340px, Gap: 2rem (32px)
     const containerWidth = Math.min(window.innerWidth, 1200) - 64;
     const gap = 32;
     const minCardWidth = 340;
@@ -35,7 +32,6 @@ export const Home = () => {
     return Math.max(1, columns) * 4; // Desktop: n columns * 4 rows
   };
 
-  // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(calculateItemsPerPage());
   const projectsRef = useRef<HTMLDivElement>(null);
