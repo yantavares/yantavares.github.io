@@ -1,12 +1,30 @@
-# Chá de Casa Nova
+# Yan Tavares - Portfolio
 
-A modern, interactive web application designed for wedding or housewarming gift registries. This project features a sophisticated "Apple-style" design with scrollytelling elements, real-time guest management, and a secure administrative panel.
+A professional portfolio website built with React and TypeScript, designed to showcase software engineering projects, academic research, and professional certifications.
+
+## Overview
+
+This application serves as a dynamic resume and portfolio, featuring:
+- **GitHub Integration**: Automatically fetches and displays repositories using the GitHub API.
+- **Interactive UI**: Utilizes Framer Motion for smooth animations, scroll effects, and transitions.
+- **Responsive Design**: Fully optimized for desktop and mobile devices.
+- **Achievements Section**: Dedicated areas for Open Source contributions, Scientific Papers, and Certifications.
 
 ## Technologies
 
-- **Frontend:** React, TypeScript, Vite
-- **Styling:** CSS Modules, Framer Motion (Animations), Canvas Confetti
-- **Backend:** Supabase (PostgreSQL, Auth, Storage)
+- **Core**: React 19, TypeScript, Vite
+- **Styling**: CSS Modules, Framer Motion
+- **Icons**: React Icons
+- **Effects**: Canvas Confetti
+- **Deployment**: GitHub Pages
+
+## Project Structure
+
+- `src/pages`: Main application views.
+- `src/components`: Reusable UI components (ProjectCard).
+- `src/hooks`: Custom hooks (useGithubProjects).
+- `src/data`: Static data definitions (achievements, papers, certifications).
+- `src/styles`: Global and component-specific styles.
 
 ## Setup and Installation
 
@@ -14,7 +32,7 @@ A modern, interactive web application designed for wedding or housewarming gift 
 
    ```bash
    git clone <repository-url>
-   cd cha-casa-nova
+   cd new-resume
    ```
 
 2. **Install dependencies**
@@ -23,23 +41,18 @@ A modern, interactive web application designed for wedding or housewarming gift 
    npm install
    ```
 
-3. **Environment Configuration**
-   Create a `.env` file in the root directory with your Supabase credentials:
+3. **Run Development Server**
 
-   ```env
-   VITE_SUPABASE_URL=your_supabase_url
-   VITE_SUPABASE_ANON_KEY=your_supabase_anon_key
-   ```
-
-4. **Run Development Server**
    ```bash
    npm run dev
    ```
 
-## Project Structure
+4. **Build for Production**
 
-- `src/pages`: Main application views (Home, Admin, Login).
-- `src/components`: Reusable UI components (ProductCard, RSVPModal).
-- `src/lib`: Supabase client configuration and type definitions.
-- `src/hooks`: Custom React hooks for Authentication and Toast notifications.
-- `src/styles`: Global and component-specific CSS files.
+   ```bash
+   npm run build
+   ```
+
+## License
+
+This project is licensed under the MIT License.
