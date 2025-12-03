@@ -229,8 +229,8 @@ export const Home = () => {
             {/* Open Source */}
             <div className="achievement-row">
               <div className="row-header">
-                <h4>Open Source</h4>
-                <p>Contributions to the community</p>
+                <h4>Open Source & Hackathons</h4>
+                <p>Open source community</p>
               </div>
               <div className="card-list">
                 {contributions.map((item, i) => (
@@ -263,8 +263,8 @@ export const Home = () => {
             {/* Scientific Papers */}
             <div className="achievement-row">
               <div className="row-header">
-                <h4>Scientific Papers</h4>
-                <p>Research & Publications</p>
+                <h4>Research</h4>
+                <p>Scientific Papers & Publications</p>
               </div>
               <div className="card-list">
                 {papers.map((item, i) => (

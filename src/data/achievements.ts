@@ -4,6 +4,11 @@ export const contributions = [
     description: "Contributed to the codebase by implementing new visualization features.",
     link: "https://github.com/petrobras/3W"
   },
+  {
+    repo: "Hackathon Petrobras 2024",
+    description: "3rd Place, developing innovative solutions for the energy sector using AI and data analysis.",
+    link: "https://www.hacktudo.com.br/hackathon-petrobras"
+  }
 ];
 
 export const papers = [
@@ -15,12 +20,17 @@ export const papers = [
   {
     title: "Incorporating Exogenous Variables into AI Models for Electricity Demand Forecasting: A Comparative Analysis",
     platform: "IEEE Access",
-    link: "#"
+    link: "https://ieee-wcnps.org/program/"
   },
   {
     title: "Modelos Para a Previsão da Demanda de Energia no Setor Elétrico Brasileiro",
     platform: "SNPTEE",
     link: "https://snptee.com.br/"
+  },
+  {
+    title: "Previsão de Demanda de Energia Elétrica no Brasil: Uma Abordagem com Modelos Estatísticos e Redes Neurais",
+    platform: "UnB",
+    link: "#"
   }
 ];
 
