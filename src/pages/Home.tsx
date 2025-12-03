@@ -38,6 +38,7 @@ export const Home = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(calculateItemsPerPage());
   const projectsRef = useRef<HTMLDivElement>(null);
+  const userTriggeredRef = useRef(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -61,15 +62,17 @@ export const Home = () => {
 
   const handlePageChange = (page: number) => {
     setCurrentPage(page);
+    userTriggeredRef.current = true;
   };
 
   // Scroll to top of projects section when page changes
   useEffect(() => {
-    if (projectsRef.current) {
+    if (userTriggeredRef.current && projectsRef.current) {
       const yOffset = -100;
       const element = projectsRef.current;
       const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
       window.scrollTo({ top: y, behavior: 'smooth' });
+      userTriggeredRef.current = false;
     }
   }, [currentPage]);
 
@@ -103,6 +106,45 @@ export const Home = () => {
       transition: { duration: 0.8, ease: "easeOut" },
     },
   };
+
+  const contributions = [
+    {
+      repo: "petrobras/3W",
+      description: "Contributed to the codebase by implementing new visualization features.",
+      link: "https://github.com/petrobras/3W"
+    },
+  ];
+
+  const papers = [
+    {
+      title: "An Analysis about Capital and Maintenance Costs related to Electrical Flexibility",
+      platform: "IEEE Access",
+      link: "https://ieeexplore.ieee.org/document/10861639"
+    },
+    {
+      title: "Incorporating Exogenous Variables into AI Models for Electricity Demand Forecasting: A Comparative Analysis",
+      platform: "IEEE Access",
+      link: "#"
+    },
+    {
+      title: "Modelos Para a Previsão da Demanda de Energia no Setor Elétrico Brasileiro",
+      platform: "SNPTEE",
+      link: "https://snptee.com.br/"
+    }
+  ];
+
+  const certifications = [
+    {
+      name: "Google Cybersecurity Professional Certificate",
+      issuer: "Google",
+      date: "2025"
+    },
+    {
+      name: "Huawei Certified ICT Associate - HCIA AI",
+      issuer: "Huawei",
+      date: "2025"
+    }
+  ];
 
   return (
     <div className="home-container">
@@ -205,6 +247,77 @@ export const Home = () => {
           )}
         </section>
 
+        <section className="achievements-section">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="section-header"
+          >
+            <h3>Contributions & Achievements</h3>
+            <p>Some of my impact.</p>
+          </motion.div>
+
+          <motion.div 
+            className="achievements-card"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            {/* Open Source */}
+            <div className="achievement-row">
+              <div className="row-header">
+                <h4>Open Source</h4>
+                <p>Contributions to the community</p>
+              </div>
+              <div className="card-list">
+                {contributions.map((item, i) => (
+                  <a key={i} href={item.link} target="_blank" rel="noopener noreferrer" className="achievement-item">
+                    <h5>{item.repo}</h5>
+                    <p>{item.description}</p>
+                  </a>
+                ))}
+              </div>
+            </div>
+
+            <div className="achievement-divider" />
+            {/* Certifications */}
+            <div className="achievement-row">
+              <div className="row-header">
+                <h4>Certifications</h4>
+                <p>Professional Licenses</p>
+              </div>
+              <div className="card-list">
+                {certifications.map((item, i) => (
+                  <div key={i} className="achievement-item">
+                    <h5>{item.name}</h5>
+                    <p>{item.issuer} • {item.date}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="achievement-divider" />
+            {/* Scientific Papers */}
+            <div className="achievement-row">
+              <div className="row-header">
+                <h4>Scientific Papers</h4>
+                <p>Research & Publications</p>
+              </div>
+              <div className="card-list">
+                {papers.map((item, i) => (
+                  <a key={i} href={item.link} target="_blank" rel="noopener noreferrer" className="achievement-item">
+                    <h5>{item.title}</h5>
+                    <span className="platform-tag">{item.platform}</span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </motion.div>
+        </section>
+
         <section className="contact-section">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -214,7 +327,7 @@ export const Home = () => {
             className="section-header"
           >
             <h3>Let's Connect</h3>
-            <p>Feel free to reach out for collaborations or just a friendly hello.</p>
+            <p>Feel free to reach out!</p>
           </motion.div>
 
           <div className="contact-grid">

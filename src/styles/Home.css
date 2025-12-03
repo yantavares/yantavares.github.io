@@ -350,3 +350,120 @@
   font-size: 0.95rem;
   font-variant-numeric: tabular-nums;
 }
+
+/* Achievements Section */
+.achievements-section {
+  margin-top: 6rem;
+}
+
+.achievements-card {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-color);
+  border-radius: 24px;
+  padding: 3rem;
+  backdrop-filter: blur(10px);
+  max-width: 1000px;
+  margin: 0 auto;
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.2);
+}
+
+.achievement-row {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.row-header h4 {
+  font-size: 1.5rem;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.row-header p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.achievement-divider {
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--border-color), transparent);
+  margin: 3rem 0;
+  opacity: 0.5;
+}
+
+.card-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+}
+
+.achievement-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid transparent;
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.achievement-item:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: var(--accent-color);
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.achievement-item h5 {
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.achievement-item p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.platform-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  padding: 0.25rem 0.75rem;
+  background: rgba(56, 189, 248, 0.1);
+  color: var(--accent-color);
+  border-radius: 999px;
+  font-weight: 500;
+  align-self: flex-start;
+}
+
+@media (max-width: 768px) {
+  .achievements-card {
+    padding: 1.5rem;
+    border-radius: 16px;
+  }
+
+  .achievement-row {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .row-header {
+    margin-bottom: 0.5rem;
+  }
+  
+  .achievement-divider {
+    margin: 2rem 0;
+  }
+}
