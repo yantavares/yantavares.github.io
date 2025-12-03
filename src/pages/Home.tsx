@@ -34,12 +34,14 @@ export const Home = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(calculateItemsPerPage());
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const projectsRef = useRef<HTMLDivElement>(null);
   const userTriggeredRef = useRef(false);
 
   useEffect(() => {
     const handleResize = () => {
       setItemsPerPage(calculateItemsPerPage());
+      setIsMobile(window.innerWidth < 768);
       setCurrentPage(1);
     };
 
@@ -108,7 +110,7 @@ export const Home = () => {
     <div className="home-container">
       <motion.div className="progress-bar" style={{ scaleX }} />
       <header className="hero" onClick={handleHeroClick} style={{ cursor: 'pointer' }}>
-        <motion.div className="hero-background" style={{ y: backgroundY }} />
+        <motion.div className="hero-background" style={{ y: isMobile ? 0 : backgroundY }} />
         <motion.div
           className="hero-content"
           variants={containerVariants}
@@ -350,7 +352,9 @@ export const Home = () => {
                   <motion.div
                     style={{ overflow: 'hidden', display: 'flex' }}
                     variants={{
-                      visible: { opacity: 0, scale: 0, x: -10, width: 0 },
+                      visible: isMobile 
+                        ? { opacity: 1, scale: 1, x: 0, width: 'auto' } 
+                        : { opacity: 0, scale: 0, x: -10, width: 0 },
                       hover: { opacity: 1, scale: 1, x: 0, width: 'auto' }
                     }}
                     transition={{ duration: 0.2 }}
