@@ -4,6 +4,7 @@ import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
 import confetti from "canvas-confetti";
 import { useGithubProjects } from "../hooks/useGithubProjects";
 import { ProjectCard } from "../components/ProjectCard";
+import { contributions, papers, certifications } from "../data/achievements";
 import pfp from "../assets/pfp.png";
 import "../styles/Home.css";
 
@@ -106,45 +107,6 @@ export const Home = () => {
       transition: { duration: 0.8, ease: "easeOut" },
     },
   };
-
-  const contributions = [
-    {
-      repo: "petrobras/3W",
-      description: "Contributed to the codebase by implementing new visualization features.",
-      link: "https://github.com/petrobras/3W"
-    },
-  ];
-
-  const papers = [
-    {
-      title: "An Analysis about Capital and Maintenance Costs related to Electrical Flexibility",
-      platform: "IEEE Access",
-      link: "https://ieeexplore.ieee.org/document/10861639"
-    },
-    {
-      title: "Incorporating Exogenous Variables into AI Models for Electricity Demand Forecasting: A Comparative Analysis",
-      platform: "IEEE Access",
-      link: "#"
-    },
-    {
-      title: "Modelos Para a Previsão da Demanda de Energia no Setor Elétrico Brasileiro",
-      platform: "SNPTEE",
-      link: "https://snptee.com.br/"
-    }
-  ];
-
-  const certifications = [
-    {
-      name: "Google Cybersecurity Professional Certificate",
-      issuer: "Google",
-      date: "2025"
-    },
-    {
-      name: "Huawei Certified ICT Associate - HCIA AI",
-      issuer: "Huawei",
-      date: "2025"
-    }
-  ];
 
   return (
     <div className="home-container">
