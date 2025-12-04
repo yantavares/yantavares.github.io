@@ -234,10 +234,17 @@ export const Home = () => {
               </div>
               <div className="card-list">
                 {contributions.map((item, i) => (
-                  <a key={i} href={item.link} target="_blank" rel="noopener noreferrer" className="achievement-item">
-                    <h5>{item.repo}</h5>
-                    <p>{item.description}</p>
-                  </a>
+                  item.link ? (
+                    <a key={i} href={item.link} target="_blank" rel="noopener noreferrer" className="achievement-item">
+                      <h5>{item.repo}</h5>
+                      <p>{item.description}</p>
+                    </a>
+                  ) : (
+                    <div key={i} className="achievement-item">
+                      <h5>{item.repo}</h5>
+                      <p>{item.description}</p>
+                    </div>
+                  )
                 ))}
               </div>
             </div>
@@ -268,10 +275,17 @@ export const Home = () => {
               </div>
               <div className="card-list">
                 {papers.map((item, i) => (
-                  <a key={i} href={item.link} target="_blank" rel="noopener noreferrer" className="achievement-item">
-                    <h5>{item.title}</h5>
-                    <span className="platform-tag">{item.platform}</span>
-                  </a>
+                  item.link ? (
+                    <a key={i} href={item.link} target="_blank" rel="noopener noreferrer" className="achievement-item">
+                      <h5>{item.title}</h5>
+                      <span className="platform-tag">{item.platform}</span>
+                    </a>
+                  ) : (
+                    <div key={i} className="achievement-item">
+                      <h5>{item.title}</h5>
+                      <span className="platform-tag">{item.platform}</span>
+                    </div>
+                  )
                 ))}
               </div>
             </div>
@@ -368,9 +382,9 @@ export const Home = () => {
         </section>
       </main>
 
-      <footer className="footer">
+            <footer className="footer">
         <div className="footer-content">
-          <p>&copy; {new Date().getFullYear()} Yan Tavares.</p>
+          <p>“We can only see a short distance ahead, but we can see plenty there that needs to be done.” - Alan Turing</p>
         </div>
       </footer>
     </div>
