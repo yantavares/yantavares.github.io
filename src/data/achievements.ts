@@ -30,7 +30,7 @@ export const papers = [
   {
     title: "Previsão de Demanda de Energia Elétrica no Brasil: Uma Abordagem com Modelos Estatísticos e Redes Neurais",
     platform: "UnB",
-    link: "#"
+    link: ""
   }
 ];
 
